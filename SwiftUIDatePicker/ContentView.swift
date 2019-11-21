@@ -9,8 +9,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var time = Date()
+    
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM d, hh:mm:ss a"
+        return formatter
+    }
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            DatePicker(selection: $time,
+               label: { Text("")
+            }).frame(width: UIScreen.main.bounds.width / 2)
+            
+            Text("\(time, formatter: dateFormatter)")
+        }
     }
 }
 
